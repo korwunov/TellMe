@@ -1,0 +1,30 @@
+.header {
+    background-color: darkslategrey;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.header > ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header > ul > li {
+    margin-right: 6em;
+    list-style-type: none;
+}
+
+a:hover {
+    
+    transform: scale(1.2);
+}
+
+.header > ul > li > a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.5s;
+}
