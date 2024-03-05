@@ -1,5 +1,5 @@
 import React from "react";
-
+//TODO добавить стилей кнопке
 const BookmarkComponent = ({ status, ...rest }) => {
     return (
         <button

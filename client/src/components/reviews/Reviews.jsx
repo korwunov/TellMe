@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "../../api"
-import ReviewComponent from "./Review";
+import ReviewComponent from "./GridReview";
 import classes from "../../styles/reviews.module.css"
 
 const Reviews = () => {
