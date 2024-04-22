@@ -1,0 +1,20 @@
+.grid_block {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    padding-top: 4em;
+}
+
+.login_container {
+    padding-left: 2em;
+    padding-top: 2em;
+    padding-bottom: 2.5em;
+    padding-right: 2em;
+    border-radius: 20px 20px;
+    border-style: none;
+    box-shadow: -1px 0px 9px rgba(47, 79, 79, 0.42), 4px 4px 50px rgba(47, 79, 79, 0.2);
+    width: 70%;
+    margin-bottom: 2em;
+    display: flex;
+
+}

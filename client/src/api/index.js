@@ -1,5 +1,5 @@
-import * as reviews from "./mock_reviews"
+import * as Organizations from "./mock_reviews"
 const API = {
-    reviews
+    Organizations
 }
 export default API
