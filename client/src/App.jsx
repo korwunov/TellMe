@@ -8,6 +8,7 @@ import UserReviews from './components/reviews/UserReviewsGrid';
 import ReviewModal from './components/modals/ReviewModal';
 import Login from './components/users/LoginPage';
 import Registration from './components/users/RegistrationPage';
+import { CookieBanner } from './components/modals/CookiesModal';
 
 //const ProtectedReviewModal = withAuthentificator()
 
@@ -20,16 +21,11 @@ function App() {
           <Route path='/my_reviews' element={ <UserReviews/> }/>
           <Route path='/review/:id' element={ <ReviewModal/> }/>
           <Route path='/login' element={ <Login/> } />
-          <Route path='/registration' element={ <Registration/> } />
+          <Route path='/registration' element={ <Registration/> } />  
         </Route>
       </Routes>
+      <CookieBanner/>
     </Router>
-    // <>
-    //   <Header/>
-    //   <main>
-    //     <Reviews/>
-    //   </main>
-    // </>
   );
 }
 

@@ -41,6 +41,69 @@ const Organizations = [
         rate: 4.5,
         bookmark: false
     },
+    {
+        _id: "67rdca3eeb7f6fgee376h6543",
+        organization_name: "МИРЭА",
+        address: "Москва, Проспект Вернандского 78",
+        reviews: [
+            {   
+                owner_id: "67rdca3eeb7f6fgeed2547857",
+                owner_name: "Дмитрий",
+                rate: 4.0,
+                comment: "ДУШНО"
+            },
+            {   
+                owner_id: "67rdca3eeb7f6fhsdfh6534654",
+                owner_name: "Кепарис",
+                rate: 5.0,
+                comment: "Можно сходить поисследовать операции"
+            },
+        ],
+        rate: 4.5,
+        bookmark: false
+    },
+    {
+        _id: "67rdca3eeb7f6fgee376h6543",
+        organization_name: "МИРЭА",
+        address: "Москва, Проспект Вернандского 78",
+        reviews: [
+            {   
+                owner_id: "67rdca3eeb7f6fgeed2547857",
+                owner_name: "Дмитрий",
+                rate: 4.0,
+                comment: "ДУШНО"
+            },
+            {   
+                owner_id: "67rdca3eeb7f6fhsdfh6534654",
+                owner_name: "Кепарис",
+                rate: 5.0,
+                comment: "Можно сходить поисследовать операции"
+            },
+        ],
+        rate: 4.5,
+        bookmark: false
+    },
+    {
+        _id: "67rdca3eeb7f6fgee376h6543",
+        organization_name: "МИРЭА",
+        address: "Москва, Проспект Вернандского 78",
+        reviews: [
+            {   
+                owner_id: "67rdca3eeb7f6fgeed2547857",
+                owner_name: "Дмитрий",
+                rate: 4.0,
+                comment: "ДУШНО"
+            },
+            {   
+                owner_id: "67rdca3eeb7f6fhsdfh6534654",
+                owner_name: "Кепарис",
+                rate: 5.0,
+                comment: "Можно сходить поисследовать операции"
+            },
+        ],
+        rate: 4.5,
+        bookmark: false
+    }
 ]
 
 const userReviews = [

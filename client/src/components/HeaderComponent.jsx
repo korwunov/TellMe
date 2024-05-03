@@ -8,8 +8,7 @@ const Logo = () => {
        <img src='logo48.png' alt="Logo"></img>
     )
 }
-//TODO routing 
-//TODO добавить анимацию (увеличения например) при наведении на название раздела
+
 const Navigation = ({isAuthorized}) => {
     const [showReviewModal, setShowReviewModal] = useState(false);
     return (

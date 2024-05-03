@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+       "allowImportingTsExtensions": true,
+       "declaration": true,
+       "lib": [
+          "es6"
+       ],
+       "target": "es6",
+       "module": "es6",
+       "moduleResolution": "node",
+       "outDir": "dist",
+       "resolveJsonModule": true,
+       "emitDecoratorMetadata": true,
+       "emitDeclarationOnly": true,
+       "esModuleInterop": true,
+       "experimentalDecorators": true,
+       "sourceMap": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+ }
