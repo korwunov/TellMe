@@ -1,8 +1,19 @@
 import jwt from "jsonwebtoken";
-import User from "../models/user";
+import User from "../models/user.ts";
 import { Request, Response, NextFunction } from "express";
+import bcryptjs from 'bcryptjs'
 
-const config = process.env;
+const { AUTH_SECRET_KEY } = process.env;
+
+const adminRoutes = [
+  '/users'
+]
+
+async function isAdmin(user_id: string) : Promise<Boolean>{
+  const user = await User.findById(user_id);
+  //console.log('USER FOUND WHILE ROLE DETERMINATION ', user);
+  return user.isAdmin;
+}
 
 export async function login(req, res) {
     // Our login logic starts here
@@ -12,46 +23,51 @@ export async function login(req, res) {
 
         // Validate user input
         if (!(email && password)) {
-            res.status(400).send("All input is required");
+          return res.status(400).json({ "error": "no email or password" });
         }
         // Validate if user exist in our database
         const user = await User.findOne({ email });
-
-        if (user && (await bcrypt.compare(password, user.password))) {
+        if (user && (await bcryptjs.compare(password, user.password))) {
         // Create token
             const token = jwt.sign(
                 { user_id: user._id, email },
-                process.env.TOKEN_KEY,
+                  AUTH_SECRET_KEY,
                 {
-                expiresIn: "5h",
+                  expiresIn: "5h",
                 }
             );
 
             // save user token
-            user.token = token;
+            // user.token = token;
 
             // user
-            return res.status(200).json(user);
+            return res.status(200).json({ "token": token });
         }
-        return res.status(400).send("Invalid Credentials");
+        res.status(400).send("Invalid Credentials");
     }
     catch (err) {
         console.log(err);
-        return res.status(400).send("Invalid Credentials");
+        res.status(400).send("Invalid Credentials");
     }
 }
 
 
-export function verifyToken(req: any, res: Response, next: NextFunction) {
+export async function verifyToken(req: any, res: Response, next: NextFunction) {
   const token = req.headers["x-access-token"];
-
+  const route = req.originalUrl;
+  //console.log(route);
   if (!token) {
     return res.status(403).send("A token is required for authentication");
   }
   try {
-    const decoded = jwt.verify(token, config.TOKEN_KEY);
-    console.log(decoded)
-    req.user = decoded;
+    const decodedUser = jwt.verify(token, AUTH_SECRET_KEY);
+
+    if (adminRoutes.includes(route)) {
+      if (await isAdmin(decodedUser.user_id)) {}
+      else return res.status(403).json({ "error": "you are not allowed to go here"});
+    }
+
+    req.user = decodedUser;
   } catch (err) {
     return res.status(401).send("Invalid Token");
   }
@@ -74,7 +90,7 @@ export async function register(req, res) {
     const oldUser = await User.findOne({ email });
 
     if (oldUser) {
-      return res.status(409).send("User Already Exist. Please Login");
+      return res.status(401).send("User Already Exist. Please Login");
     }
 
     //Encrypt user password
@@ -84,8 +100,9 @@ export async function register(req, res) {
     const user = await User.create({
       first_name: firstName,
       last_name: lastName,
-      email: email.toLowerCase(), // sanitize
+      email: email, // sanitize
       password: encryptedUserPassword,
+      isAdmin: false,
     });
 
     // Create token

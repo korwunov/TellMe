@@ -1,9 +1,10 @@
 import express from 'express';
-import connect from './config/db';
+import connect from './config/db.ts';
 import dotenv from 'dotenv';
 import { routes } from './routes/index.ts'
 
 const app = express();
+connect();
 dotenv.config()
 
 const port = process.env.PORT || '8080'
@@ -25,6 +26,6 @@ app.use('/users', routes);
 //     return;
 // });
   
-app.listen(8080, () => {
-    console.log(`Example app listening at ${port}`)
+app.listen(port, () => {
+    console.log(`tellme server listening at ${port}`);
 });

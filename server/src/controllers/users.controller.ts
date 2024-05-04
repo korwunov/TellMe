@@ -7,12 +7,43 @@ export async function register(req: Request, res: Response) {
         res.json(await authService.register(req, res))
     }
     catch (err) {
-        console.log('error while request processing');
-        res.status(500).send({'message': err.message})
+        console.error('error while request processing');
+        console.log(err.message);
+    }
+}
+
+export async function login(req: Request, res: Response) {
+    try {
+        res.json(await authService.login(req, res))
+    }
+    catch (err) {
+        console.error('error while request processing');
+        console.log(err.message);
     }
 }
 
 
-export async function getProfileData(req: Request, res: Response) {
+export async function getProfileData(req: any, res: Response) {
+    try {
+        res.status(200).json(await userService.getProfileData(req.user.user_id, res))
+    }
+    catch (err) {
+        console.error('error while request processing');
+        console.log(err.message);
+    }
+}
 
+export async function updateProfileData(req: any, res: Response) {
+    try {
+        res.status(200).json(await userService.updateProfileData(req, res));
+    }
+    catch (err) {
+        console.error('error while request processing');
+        console.log(err.message);
+    }
+}
+
+export async function getAllUsers(req: any, res: Response) {
+    //TODO: read all users
+    return res.status(200).json({ "message": "all users are here" })
 }
