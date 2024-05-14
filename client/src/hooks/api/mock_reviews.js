@@ -42,7 +42,7 @@ const Organizations = [
         bookmark: false
     },
     {
-        _id: "67rdca3eeb7f6fgee376h6543",
+        _id: "67rdca3eeb7f6fgee376h6764",
         organization_name: "МИРЭА",
         address: "Москва, Проспект Вернандского 78",
         reviews: [
@@ -63,7 +63,7 @@ const Organizations = [
         bookmark: false
     },
     {
-        _id: "67rdca3eeb7f6fgee376h6543",
+        _id: "67rdca3eeb7f6fgee376h6502",
         organization_name: "МИРЭА",
         address: "Москва, Проспект Вернандского 78",
         reviews: [
@@ -84,7 +84,7 @@ const Organizations = [
         bookmark: false
     },
     {
-        _id: "67rdca3eeb7f6fgee376h6543",
+        _id: "67rdca3eeb7f6fgee376h6234",
         organization_name: "МИРЭА",
         address: "Москва, Проспект Вернандского 78",
         reviews: [

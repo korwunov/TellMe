@@ -1,7 +1,7 @@
 import express from 'express';
 import connect from './config/db.ts';
 import dotenv from 'dotenv';
-import { routes } from './routes/index.ts'
+import { usersRouter } from './routes/users.route.ts'
 
 const app = express();
 connect();
@@ -11,11 +11,23 @@ const port = process.env.PORT || '8080'
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
     res.json({'message': 'ok'})
 });
 
-app.use('/users', routes);
+app.use((req, res, next) => {
+    const allowedOrigins = ['http://localhost:3000'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    return next();
+});
+
+app.use('/api/users', usersRouter);
 
 /* Error handler middleware */
 // app.use((err, req, res, next) => {

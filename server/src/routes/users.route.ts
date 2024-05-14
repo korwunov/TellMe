@@ -13,4 +13,8 @@ usersRouter.post('/my', verifyToken, userController.updateProfileData);
 
 usersRouter.get('/', verifyToken, userController.getAllUsers);
 
+usersRouter.get('/getById', verifyToken, userController.getUserById)
+
+usersRouter.delete('/delete', verifyToken, userController.deleteUserById)
+
 export default usersRouter;

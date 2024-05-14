@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import api from "../../api"
-import OrgReviewComponent from "./OrganizationsReviews";
+import api from "../../hooks/api"
+import ReviewComponent from "./Review";
 import classes from "../../styles/reviews.module.css"
 
-const OrganizationsReviews = () => {
+const AllReviews = () => {
     const [reviews] = useState(api.Organizations.fetchAllOrganizations());
     return (
         <>
@@ -12,7 +12,7 @@ const OrganizationsReviews = () => {
                     <h1>Все отзывы</h1>
                     <div className={classes.grid}>
                         {reviews.map((review) => (
-                            <OrgReviewComponent
+                            <ReviewComponent
                                 key={review._id}
                                 {...review}
                             />
@@ -24,4 +24,4 @@ const OrganizationsReviews = () => {
     )
 }
 
-export default OrganizationsReviews;
+export default AllReviews;

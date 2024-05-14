@@ -44,6 +44,19 @@ export async function updateProfileData(req: any, res: Response) {
 }
 
 export async function getAllUsers(req: any, res: Response) {
-    //TODO: read all users
-    return res.status(200).json({ "message": "all users are here" })
+    try {
+        res.status(200).json(await userService.getAllUsers());
+    }
+    catch (err) {
+        console.error('error while request processing');
+        console.log(err.message);
+    }
+}
+
+export async function deleteUserById(req: any, res: Response) {
+    res.status(200).json({ 'message': 'STUB for delete user' });
+}
+
+export async function getUserById(req: any, res: Response) {
+    res.status(200).json({ 'message': 'STUB for get user by id' });
 }

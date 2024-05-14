@@ -3,7 +3,7 @@ import classes from "../../styles/reviews.module.css"
 import BookmarkComponent from "./Bookmark"
 import InfoComponent from "./OrganizationInfo"
 
-const OrgReviewComponent = React.memo(function ReviewComponent(props) {
+const ReviewComponent = React.memo(function ReviewComponent(props) {
     return (
         <div className={classes.review_item}>
 
@@ -21,4 +21,4 @@ const OrgReviewComponent = React.memo(function ReviewComponent(props) {
     )
 });
 
-export default OrgReviewComponent;
+export default ReviewComponent;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../../api"
+import api from "../../hooks/api"
 import UserReviewComponent from "./UserReview";
 import classes from "../../styles/reviews.module.css"
 

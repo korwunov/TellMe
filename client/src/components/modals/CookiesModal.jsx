@@ -14,10 +14,6 @@ export function CookieBanner() {
         saveState("cookiesBannerState", store.getState())
     }
 
-    // store.subscribe(() => {
-    //     stateLoader.saveState(store.getState())
-    // });
-
     return (
         <div className={classes.banner_container}>
             {

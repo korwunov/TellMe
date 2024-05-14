@@ -1,18 +1,15 @@
-import { jwt } from 'jsonwebtoken';
 import User from "../models/user.ts";
-import { ObjectId } from 'mongoose';
 import { Response } from 'express'
 
 export async function getProfileData(userId: string, res: Response) {
-    const userData = await User.findById(userId);
+    const userData = await User.findById(userId).select('-password');
     if (userData === null) return res.status(404).json({ "error": `user with ${userId} not found`})
     return userData;
 }
 
-export async function updateProfileData(req: any, res) {
+export async function updateProfileData(req: any, res: Response) {
     const { firstName, lastName, email } = req.body;
     const userId = req.user.user_id;
-    console.log(userId)
     if (!(userId && email && firstName && lastName)) {
         return res.status(400).send("fisrtName, lastName, email are required");
     }
@@ -27,4 +24,9 @@ export async function updateProfileData(req: any, res) {
     );
     userData = await User.findById(userId);
     return userData; 
+}
+
+export async function getAllUsers() {
+    const data = await User.find().select('-password');
+    return data;
 }
