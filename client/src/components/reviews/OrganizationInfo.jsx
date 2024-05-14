@@ -5,9 +5,9 @@ const InfoComponent = ({ info }) => {
      //TODO добавить иконку звезды
     return (
         <div className={classes.review_info}>
-            <h2 className={classes.review_org_name}>{info.organization_name}</h2>
+            <h2 className={classes.review_org_name}>{info.title}</h2>
             <h5 className={classes.review_address}>{info.address}</h5>
-            <div className={classes.review_rate}>{`${info.rate} /5`}</div>
+            <h3 className={classes.review_rate}>{info.category_name}</h3>
         </div>
     )
 }

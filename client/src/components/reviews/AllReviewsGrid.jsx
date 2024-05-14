@@ -4,7 +4,7 @@ import ReviewComponent from "./Review";
 import classes from "../../styles/reviews.module.css"
 
 const AllReviews = () => {
-    const [reviews] = useState(api.Organizations.fetchAllOrganizations());
+    const [reviews] = useState(api.mockData.fetchAllReviews());
     return (
         <>
             <main>

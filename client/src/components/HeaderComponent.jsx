@@ -13,7 +13,6 @@ const Logo = () => {
 const Navigation = ({isAuthorized}) => {
     const [showReviewModal, setShowReviewModal] = useState(false);
     const user = useAuth(); 
-    console.log(user);
     return (
         <>
             <nav>
