@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import ReviewModalComponent from "./modals/ReviewModal";
 import classes from "../styles/header.module.css"
 import { useAuth } from "../hooks/auth/AuthProvider";
 
@@ -11,7 +9,6 @@ const Logo = () => {
 }
 
 const Navigation = ({isAuthorized}) => {
-    const [showReviewModal, setShowReviewModal] = useState(false);
     const user = useAuth(); 
     return (
         <>
@@ -26,8 +23,11 @@ const Navigation = ({isAuthorized}) => {
                             <Link to="/login">Вход или регистрация</Link>
                         }
                     </li>
-                    <button onClick={() => setShowReviewModal(true)}>Написать отзыв</button>
-                    <ReviewModalComponent show={showReviewModal} close={() => setShowReviewModal(false)} />
+                    <Link to="/review/0">
+                        <button>Написать отзыв</button>
+                    </Link>
+                    
+                    
                 </ul>
             </nav>
         </>

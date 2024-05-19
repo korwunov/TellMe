@@ -14,7 +14,7 @@ export async function register(req: Request, res: Response) {
 
 export async function login(req: Request, res: Response) {
     try {
-        res.json(await authService.login(req, res))
+        await authService.login(req, res);
     }
     catch (err) {
         console.error('error while request processing');

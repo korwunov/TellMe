@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../hooks/api"
 import ReviewComponent from "./Review";
 import classes from "../../styles/reviews.module.css"
 
 const UserReviews = () => {
-    const [reviews] = useState(api.mockData.fetchAllUserReviews());
+    const [reviews, setReviews] = useState([]);
+    useEffect(() => {
+        api.reviews.fetchAllUserReviews()
+        .then((res) => {
+            setReviews(res);
+        })
+    }, []);
+    
     return (
         <main>
             <div className={classes.grid_block}>

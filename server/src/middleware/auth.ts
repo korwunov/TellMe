@@ -17,6 +17,18 @@ const ADMIN_ROUTES = [
   {
     path: '/api/users/getById',
     method: 'GET'
+  },
+  {
+    path: '/api/categories',
+    method: 'POST'
+  },
+  {
+    path: '/api/categories',
+    method: 'DELETE'
+  },
+  {
+    path: '/api/categories/update',
+    method: 'POST'
   }
 ]
 
@@ -55,10 +67,11 @@ export async function login(req, res) {
                 }
             );
             //user.select('-password');
-            return res.status(200).json({ 
+            res.status(200).json({ 
               "user": user,
               "token": token 
             });
+            return;
         }
         res.status(400).json({ "error": "invalid credentials" });
     }
@@ -72,7 +85,8 @@ export async function login(req, res) {
 export async function verifyToken(req: any, res: Response, next: NextFunction) {
   const token = req.headers["x-access-token"];
   if (!token) {
-    return res.status(403).json({ "error": "a token is required for authentication" });
+    res.status(403).json({ "error": "a token is required for authentication" });
+    return;
   }
   try {
     const decodedUser = jwt.verify(token, AUTH_SECRET_KEY);
@@ -82,13 +96,16 @@ export async function verifyToken(req: any, res: Response, next: NextFunction) {
       прежде чем пустить его туда, где нужны админские права
     */
     if (isAdminController(req)) {   
-      if (!await isAdminUser(decodedUser.user_id)) 
-        return res.status(403).json({ "error": "you are not allowed to go here"});
+      if (!await isAdminUser(decodedUser.user_id)) {
+        res.status(403).json({ "error": "you are not allowed to go here"});
+        return;
+      }
     }
 
     req.user = decodedUser;
   } catch (err) {
-    return res.status(401).send("Invalid Token");
+    res.status(401).send("Invalid Token");
+    return;
   }
   return next();
 };
@@ -99,11 +116,13 @@ export async function register(req: Request, res: Response) {
 
     if (!(email && password && firstName && lastName)) {
       res.status(400).send("All input is required");
+      return;
     }
     const oldUser = await User.findOne({ email });
 
     if (oldUser) {
-      return res.status(401).send("User Already Exist. Please Login");
+      res.status(401).send("User Already Exist. Please Login");
+      return;
     }
     let encryptedUserPassword = await bcryptjs.hash(password, 10);
     const user = await User.create({
@@ -114,7 +133,8 @@ export async function register(req: Request, res: Response) {
       isAdmin: false,
     });
 
-    return res.status(201).json(user);
+    res.status(201).json(user);
+    return;
   } catch (err) {
     console.log(err);
   }

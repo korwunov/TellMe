@@ -19,3 +19,15 @@ export async function addCategory(req: any, res: Response) {
 export async function deleteCategoryById(id: string) {
     await Category.deleteOne({ _id: new Types.ObjectId(id)});
 }
+
+export async function updateCategory(req: any, res: Response) {
+    const { id, name } = req.body;
+    if (!id || !name) {
+        res.status(400).json({ "error": "id and name required" });
+        return;
+    }
+
+    await Category.findOneAndUpdate({ _id: id }, { category_name: name });
+    res.status(200).json(await Category.findById(id));
+    return;
+}

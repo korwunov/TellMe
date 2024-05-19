@@ -5,8 +5,10 @@ export const categoriesRouter = express.Router();
 
 categoriesRouter.post('/', verifyToken, categoryController.addCategory);
 
-categoriesRouter.get('/', verifyToken, categoryController.getAllCategories);
+categoriesRouter.get('/', categoryController.getAllCategories);
 
-categoriesRouter.delete('/', verifyToken, categoryController.deleteCategory)
+categoriesRouter.delete('/', verifyToken, categoryController.deleteCategory);
+
+categoriesRouter.post("/update", verifyToken, categoryController.updateCategory);
 
 export default categoriesRouter;

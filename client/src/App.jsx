@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/HeaderComponent';
 import AllReviews from './components/reviews/AllReviewsGrid';
 import UserReviews from './components/reviews/UserReviewsGrid';
-import ReviewModal from './components/modals/ReviewModal';
+import ReviewPage from './components/reviews/ReviewPage';
 import Login from './components/users/LoginPage';
 import Registration from './components/users/RegistrationPage';
 import { CookieBanner } from './components/modals/CookiesModal';
@@ -26,7 +26,7 @@ function App() {
               <Route path='/my_reviews' element={ <UserReviews/> }/>
             </Route>
             <Route element={ <PrivateRoute /> }>
-              <Route path='/review/:id' element={ <ReviewModal/> }/>
+              <Route path='/review/:id' element={ <ReviewPage/> }/>
             </Route>
             <Route element={ <PrivateRoute /> }>
               <Route path='/profile' element={ <Profile /> }/>

@@ -1,5 +1,8 @@
-import * as mockData from "./mock_reviews"
+import * as reviews from "./reviews"
+import * as categories from './categories'
+
 const API = {
-    mockData
+    reviews,
+    categories
 }
 export default API

@@ -5,6 +5,14 @@ export const reviewsRouter = express.Router();
 
 reviewsRouter.post('/', verifyToken, reviewController.addReview);
 
-reviewsRouter.get('/', verifyToken, reviewController.getAllReviews);
+reviewsRouter.get('/', reviewController.getAllReviews);
+
+reviewsRouter.get('/my', verifyToken, reviewController.getUsersReviews)
+
+reviewsRouter.get('/:id', reviewController.getReviewById)
+
+reviewsRouter.delete('/', verifyToken, reviewController.deleteReviewById);
+
+reviewsRouter.post('/update', verifyToken, reviewController.updateReview);
 
 export default reviewsRouter;

@@ -32,3 +32,13 @@ export async function deleteCategory(req: any, res: Response) {
         console.log(err.message);
     }
 }
+
+export async function updateCategory(req: any, res: Response) {
+    try {
+        await categoryService.updateCategory(req, res);
+    }
+    catch(err) {
+        console.error('error while request processing');
+        console.log(err.message);
+    }
+}
