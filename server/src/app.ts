@@ -18,7 +18,7 @@ app.get('/api/', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    const allowedOrigins = ['http://localhost:3000'];
+    const allowedOrigins = ['http://localhost'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
