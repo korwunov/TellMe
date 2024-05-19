@@ -44,6 +44,6 @@ app.use('/api/reviews', reviewsRouter);
 //     return;
 // });
   
-app.listen(port, () => {
+app.listen(8000, 'server', () => {
     console.log(`tellme server listening at ${port}`);
 });

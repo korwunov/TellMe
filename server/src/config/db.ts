@@ -28,7 +28,6 @@ const initAdmin = async () => {
 const initCategories = async () => {
     const categoriesName = ['Продуктовые магазины', 'Рестораны и кафе', 'Торговые центры', 'Автосервисы', 'Парки', 'Салоны красоты', 'Образовательные учреждения'];
     const categories = await category.find({ category_name: { $in: categoriesName } });
-    console.log(categories, categories.length);
     if (categories.length === 0) {
         for (let name of categoriesName) {
             await category.create({
