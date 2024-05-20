@@ -7,11 +7,11 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user_data")) || null);
     const [token, setToken] = useState(localStorage.getItem("token") || "");
 
-    const url = process.env.REACT_APP_HOST_URL;
+    //const url = process.env.REACT_APP_HOST_URL;
 
     const loginAction = async (data) => {
         try {
-            const response = await fetch(url + 'api/users/login', {
+            const response = await fetch('api/users/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
     };
 
     const registerAction = async (data) => {
-        const response = await fetch(url + 'api/users/register', {
+        const response = await fetch('api/users/register', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
