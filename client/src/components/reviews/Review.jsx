@@ -31,8 +31,9 @@ const ReviewComponent = React.memo(function ReviewComponent(props) {
                 <br/>
                 <br/>
                 {
-                    authContext.user._id === props.owner || authContext.user.isAdmin ?
-                        <DeleteButton id={props._id} /> : null
+                    authContext.user === null ? null : 
+                        authContext.user._id === props.owner || authContext.user.isAdmin ?
+                            <DeleteButton id={props._id} /> : null
                 }
             </div>
             
