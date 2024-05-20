@@ -94,7 +94,8 @@ const ReviewPage = ({ ...props }) => {
                     </div>
                     {
                         review._id === "" ? 
-                           authContext.user === null ? null : 
+                            <button onClick={handleSaveClick}>Сохранить отзыв</button> :
+                            authContext.user === null ? null : 
                                 authContext.user._id === review.owner ? <button onClick={handleSaveClick}>Сохранить отзыв</button> : null
                     }
                     
