@@ -1,8 +1,8 @@
-const url = process.env.REACT_APP_HOST_URL;
+//const url = process.env.REACT_APP_HOST_URL;
 
 
 export async function fetchAllReviews() {
-    const response = await fetch(url + 'api/reviews', {
+    const response = await fetch('api/reviews', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export async function fetchAllReviews() {
 export async function fetchAllUserReviews() {
     const token = localStorage.getItem("token")
 
-    const response = await fetch(url + 'api/reviews/my', {
+    const response = await fetch('api/reviews/my', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export async function fetchAllUserReviews() {
 
 export async function fetchReviewById(id) {
     if (id !== '0') {
-        const response = await fetch(url + 'api/reviews/' + id, {
+        const response = await fetch('api/reviews/' + id, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -77,7 +77,7 @@ export async function addReview(reviewObj) {
         reviewObj.rate !== undefined && 
         reviewObj.category !== undefined
     ) {
-        const response = await fetch(url + 'api/reviews', {
+        const response = await fetch('api/reviews', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -109,7 +109,7 @@ export async function updateReview(reviewObj) {
         reviewObj.category !== undefined &&
         reviewObj.owner !== undefined
     ) {
-        const response = await fetch(url + 'api/reviews/update', {
+        const response = await fetch('api/reviews/update', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -133,7 +133,7 @@ export async function updateReview(reviewObj) {
 export async function deleteReview(id) {
     const token = localStorage.getItem("token")
     if (id !== undefined) {
-        const response = await fetch(url + 'api/reviews', {
+        const response = await fetch('api/reviews', {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
