@@ -2,7 +2,7 @@
 //const token = localStorage.getItem("token")
 
 export async function fetchAllCategories() {
-    const response = await fetch('api/categories', {
+    const response = await fetch('/api/categories', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

@@ -77,7 +77,7 @@ export async function addReview(reviewObj) {
         reviewObj.rate !== undefined && 
         reviewObj.category !== undefined
     ) {
-        const response = await fetch('api/reviews', {
+        const response = await fetch('/api/reviews', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -109,7 +109,7 @@ export async function updateReview(reviewObj) {
         reviewObj.category !== undefined &&
         reviewObj.owner !== undefined
     ) {
-        const response = await fetch('api/reviews/update', {
+        const response = await fetch('/api/reviews/update', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
