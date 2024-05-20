@@ -39,7 +39,7 @@ export async function fetchAllUserReviews() {
 
 export async function fetchReviewById(id) {
     if (id !== '0') {
-        const response = await fetch('api/reviews/' + id, {
+        const response = await fetch('/api/reviews/' + id, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
