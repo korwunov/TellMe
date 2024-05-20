@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth/AuthProvider";
 import DeleteButton from "./DeleteButtonComponent";
 
-const ReviewComponent = React.memo(function ReviewComponent(props) {
+const ReviewComponent = (props) => {
     const authContext = useAuth();
     const truncate = (text) => {
         return text.length > 20 ? 
             text.substring(0, 17) + "..." :
             text;
-
     }
     
     return (
@@ -31,13 +30,14 @@ const ReviewComponent = React.memo(function ReviewComponent(props) {
                 <br/>
                 <br/>
                 {
-                    authContext.user._id === props.owner || authContext.user.isAdmin ?
-                        <DeleteButton id={props._id} /> : null
+                    authContext.user === null ? null : 
+                        authContext.user._id === props.owner || authContext.user.isAdmin ?
+                            <DeleteButton id={props._id} /> : null
                 }
             </div>
             
         </div>
     )
-});
+};
 
 export default ReviewComponent;

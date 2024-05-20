@@ -18,7 +18,7 @@ app.get('/api/', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    const allowedOrigins = ['http://localhost'];
+    const allowedOrigins = ['http://localhost:3000', 'http://localhost'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
@@ -44,6 +44,6 @@ app.use('/api/reviews', reviewsRouter);
 //     return;
 // });
   
-app.listen(8000, 'server', () => {
+app.listen(8000, () => {
     console.log(`tellme server listening at ${port}`);
 });
