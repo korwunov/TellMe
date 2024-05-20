@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 
 app.use('/api/users', usersRouter);
 
-app.use('/review/api/categories', categoriesRouter);
+app.use('/api/categories', categoriesRouter);
 
 app.use('/api/reviews', reviewsRouter);
 
