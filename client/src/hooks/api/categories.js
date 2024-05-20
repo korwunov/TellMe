@@ -1,8 +1,8 @@
-//const url = process.env.REACT_APP_HOST_URL;
+const url = process.env.REACT_APP_HOST_URL;
 //const token = localStorage.getItem("token")
 
 export async function fetchAllCategories() {
-    const response = await fetch('api/categories', {
+    const response = await fetch(url + 'api/categories', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
